@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { BooksListComponent } from './components/books-list/books-list.component';
 
@@ -7,7 +8,9 @@ import { BooksListComponent } from './components/books-list/books-list.component
         declarations: [
             BooksListComponent
         ],
-        imports: [],
+        imports: [
+            CommonModule
+        ],
         entryComponents: []
     }
 )

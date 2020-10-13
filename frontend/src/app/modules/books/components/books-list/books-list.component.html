@@ -1,1 +1,48 @@
-<p>books-list works!</p>
+<h1>Books List</h1>
+
+<!-- <form>
+    <div class="form-group form-inline">
+        Full text search: <input class="form-control ml-2" type="text" [formControl]="filter" />
+    </div>
+</form> -->
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">Author</th>
+            <th scope="col">ISBN</th>
+            <th scope="col">Date of publishing</th>
+            <th scope="col">Cover Link</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let book of book$ | async; index as i">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>
+                {{book.title}}
+            </td>
+            <td>
+                {{book.author}}
+            </td>
+            <td>
+                {{book.isbn}}
+            </td>
+            <td>
+                {{book.publish_date}}
+            </td>
+            <td>
+                <a href="{{book.cover_link}}" target="_blank"><i class="fa fa-link"></i></a>
+            </td>
+            <td>
+                <a href="#"><i class="fa fa-edit"></i></a>
+            </td>
+            <td>
+                <a href="#"><i class="fa fa-trash"></i></a>
+            </td>
+        </tr>
+    </tbody>
+</table>
