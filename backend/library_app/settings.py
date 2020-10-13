@@ -25,10 +25,14 @@ SECRET_KEY = 'u-m44cu58rl9)qwoe)z7twa2w4u-627!@h8^7&f@mx=vd1(*sn'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
+
+LOCAL_APPS = [
+    'books'
+]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -37,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-]
+] + LOCAL_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
