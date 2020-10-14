@@ -2,3 +2,12 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 
 @import "~font-awesome/scss/font-awesome.scss";
+
+html,
+body {
+    height: 100%;
+}
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}

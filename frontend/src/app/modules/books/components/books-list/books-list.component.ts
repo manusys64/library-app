@@ -1,7 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Book } from 'src/app/intefaces/book';
-import { BackendService } from 'src/app/services/backend.service';
+import { ServerDataSource } from 'ng2-smart-table';
+import { environment } from 'src/environments/environment';
+import { settings } from './smart-table-settings';
 
 @Component({
     selector: 'app-books-list',
@@ -9,14 +10,27 @@ import { BackendService } from 'src/app/services/backend.service';
     styleUrls: ['./books-list.component.scss']
 })
 export class BooksListComponent implements OnInit {
-    book$: Observable<Book>;
+    tableSettings = settings;
+    source: ServerDataSource;
 
     constructor(
-        private backendService: BackendService
-    ) { }
-
-    ngOnInit(): void {
-        this.book$ = this.backendService.get('books/', {});
+        private http: HttpClient
+    ) {
     }
 
+    ngOnInit(): void {
+        this.source = new ServerDataSource(
+            this.http,
+            {
+                endPoint: environment.url + 'books/',
+                dataKey: 'results',
+                pagerPageKey: 'page',
+                pagerLimitKey: 'page_size',
+                totalKey: 'count',
+                sortFieldKey: 'ordering',
+                sortDirKey: 'direction',
+                filterFieldKey: '#field#'
+            })
+        this.source.setPaging(1, 10);
+    }
 }

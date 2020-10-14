@@ -1,0 +1,43 @@
+<div class="card">
+    <div class="card-body">
+
+        <div *ngIf="errors" class="alert alert-danger" role="alert">
+            <p *ngFor="let error of errors" class="mb-0">{{error}}</p>
+        </div>
+
+        <form [formGroup]="formGroup">
+            <div class="form-group">
+                <label>Title</label>
+                <input type="text" class="form-control" formControlName="title" nbInput>
+            </div>
+            <div class="form-group">
+                <label>Author</label>
+                <input type="text" class="form-control" formControlName="author" nbInput>
+            </div>
+            <div class="form-group">
+                <label>Language</label>
+                <input type="text" class="form-control" formControlName="language" nbInput>
+            </div>
+            <div class="form-group">
+                <label>Date of publish</label>
+                <input type="date" class="form-control" formControlName="publish_date" nbInput>
+            </div>
+            <div class="form-group">
+                <label>Number of pages</label>
+                <input type="number" class="form-control" formControlName="pages_number" nbInput>
+            </div>
+            <div class="form-group">
+                <label>ISBN</label>
+                <input type="text" class="form-control" formControlName="isbn" maxlength="13" nbInput>
+            </div>
+            <div class="form-group">
+                <label>Link to cover</label>
+                <input type="link" class="form-control" formControlName="cover_link" nbInput>
+            </div>
+        </form>
+
+        <button nbButton size="medium" class="btn btn-success" [disabled]="!formGroup.valid || saved" (click)="save()">
+            Save
+        </button>
+    </div>
+</div>
