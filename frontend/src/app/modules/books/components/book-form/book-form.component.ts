@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { Book } from 'src/app/intefaces/book';
 import { BackendService } from 'src/app/services/backend.service';
 
 @Component({
@@ -9,16 +11,20 @@ import { BackendService } from 'src/app/services/backend.service';
     styleUrls: ['./book-form.component.scss']
 })
 export class BookFormComponent implements OnInit {
+    @Input() initialValues?: Book;
+
     formGroup: FormGroup;
     saved = false;
     errors: string[];
 
     constructor(
         private backendService: BackendService,
+        private toastrService: ToastrService,
         private router: Router
     ) { }
 
     ngOnInit(): void {
+        console.log(this.initialValues)
         this.formGroup = new FormGroup(
             {
                 title: new FormControl('', [Validators.required]),
@@ -38,6 +44,7 @@ export class BookFormComponent implements OnInit {
         this.backendService.post('books/', this.formGroup.value)
             .subscribe(
                 _ => {
+                    this.toastrService.success('Book saved successfuly')
                     this.router.navigateByUrl('');
                 },
                 response => {

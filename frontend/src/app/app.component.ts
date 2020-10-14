@@ -14,6 +14,9 @@ import { Component } from '@angular/core';
                     <li class="nav-item">
                         <a class="nav-link" href="/form">Add</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/borrow">Borrow</a>
+                    </li>
                 </ul>
             </div>
         </nav>

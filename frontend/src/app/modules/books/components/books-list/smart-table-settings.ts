@@ -1,9 +1,16 @@
-export const settings = {
+export const internalSettings = {
     pager: {
         per_Page: 25,
         display: true
     },
-    actions: false,
+    actions: {
+        add: false,
+        edit: false,
+        delete: {
+            deleteButtonContent: '<i class="nb-trash"></i>',
+            confirmDelete: true
+        },
+    },
     columns: {
         title: {
             title: 'Title',
