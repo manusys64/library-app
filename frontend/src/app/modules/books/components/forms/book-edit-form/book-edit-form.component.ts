@@ -12,13 +12,14 @@ export class BookEditFormComponent extends BookFormComponent {
         this.backendService.put(`books/${this.initialValues.id}/`, this.formGroup.value)
             .subscribe(
                 _ => {
-                    this.toastrService.success('Book saved successfuly')
-                    this.dialog.closeAll()
+                    this.toastrService.success('Book saved successfuly');
+                    window.location.reload();
+                    this.dialog.closeAll();
                 },
                 response => {
-                    this.handleErrors(response.error)
+                    this.handleErrors(response.error);
                     this.saved = false;
                 }
-            )
+            );
     }
 }

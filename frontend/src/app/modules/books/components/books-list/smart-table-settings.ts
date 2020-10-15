@@ -11,6 +11,10 @@ export const internalSettings = {
             {
                 name: 'custom_edit',
                 title: `<i class="fa fa-edit"></i>`
+            },
+            {
+                name: 'custom_delete',
+                title: `<br><i class="fa fa-trash"></i>`
             }
         ],
     },

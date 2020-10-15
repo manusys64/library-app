@@ -36,6 +36,13 @@ export class BackendService {
         )
     }
 
+    delete(url: string, params: object): any {
+        return this.httpClient.delete(
+            this.createUrl(url),
+            params
+        )
+    }
+
     createUrl(url: string) {
         return environment.url + url
     }

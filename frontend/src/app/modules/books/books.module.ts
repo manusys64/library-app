@@ -12,6 +12,7 @@ import { BookAddFormComponent } from './components/forms/book-add-form/book-add-
 import { BookAddPopupComponent } from './components/popups/book-add-popup/book-add-popup.component';
 import { BookEditPopupComponent } from './components/popups/book-edit-popup/book-edit-popup.component';
 import { BookFormComponent } from './components/forms/book-form/book-form.component';
+import { BookDeletePopupComponent } from './components/popups/book-delete-popup/book-delete-popup.component';
 
 
 @NgModule(
@@ -24,7 +25,8 @@ import { BookFormComponent } from './components/forms/book-form/book-form.compon
             BookEditFormComponent,
             BookAddComponent,
             BookAddPopupComponent,
-            BookEditPopupComponent
+            BookEditPopupComponent,
+            BookDeletePopupComponent
         ],
         imports: [
             CommonModule,

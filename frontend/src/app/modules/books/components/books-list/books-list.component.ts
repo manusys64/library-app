@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ServerDataSource } from 'ng2-smart-table';
+import { Ng2SmartTableComponent, ServerDataSource } from 'ng2-smart-table';
 import { environment } from 'src/environments/environment';
+import { BookDeletePopupComponent } from '../popups/book-delete-popup/book-delete-popup.component';
 import { BookEditPopupComponent } from '../popups/book-edit-popup/book-edit-popup.component';
 import { internalSettings } from './smart-table-settings';
 
@@ -14,6 +15,10 @@ import { internalSettings } from './smart-table-settings';
 export class BooksListComponent implements OnInit {
     tableSettings = internalSettings;
     source: ServerDataSource;
+    actions = {
+        custom_edit: BookEditPopupComponent,
+        custom_delete: BookDeletePopupComponent
+    }
 
     constructor(
         private http: HttpClient,
@@ -36,7 +41,8 @@ export class BooksListComponent implements OnInit {
             })
     }
 
-    edit(event) {
-        this.dialog.open(BookEditPopupComponent, { data: event.data });
+    onAction(event) {
+        this.dialog.open(this.actions[event.action], { data: event.data });
     }
+
 }

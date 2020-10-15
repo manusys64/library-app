@@ -12,5 +12,4 @@ export class BookEditPopupComponent extends BookFormPopupComponent {
     get postData(): Book {
         return this.data;
     }
-
 }

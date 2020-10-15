@@ -12,6 +12,8 @@ import { BackendService } from 'src/app/services/backend.service';
     styleUrls: ['./book-form.component.scss']
 })
 export class BookFormComponent implements OnInit {
+    // can't be abstract, unfortunately
+
     @Input() initialValues?: Book;
 
     formGroup: FormGroup;
