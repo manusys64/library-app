@@ -37,7 +37,7 @@ export class BooksListComponent implements OnInit {
                 totalKey: 'count',
                 sortFieldKey: 'ordering',
                 sortDirKey: 'direction',
-                filterFieldKey: '#field#'
+                filterFieldKey: '#field#__icontains'
             })
     }
 
