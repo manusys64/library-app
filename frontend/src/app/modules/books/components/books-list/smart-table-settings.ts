@@ -6,10 +6,13 @@ export const internalSettings = {
     actions: {
         add: false,
         edit: false,
-        delete: {
-            deleteButtonContent: '<i class="nb-trash"></i>',
-            confirmDelete: true
-        },
+        delete: false,
+        custom: [
+            {
+                name: 'custom_edit',
+                title: `<i class="fa fa-edit"></i>`
+            }
+        ],
     },
     columns: {
         title: {

@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ServerDataSource } from 'ng2-smart-table';
-import { BookAddPopupComponent } from '../book-add-popup/book-add-popup.component';
+import { BookAddPopupComponent } from '../popups/book-add-popup/book-add-popup.component';
 import { externalSettings } from './smart-table-settings';
 
 @Component({
@@ -21,7 +21,6 @@ export class ExternalBooksComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        // not on init!
         this.source = new ServerDataSource(
             this.http,
             {
@@ -30,7 +29,8 @@ export class ExternalBooksComponent implements OnInit {
                 pagerPageKey: 'startIndex',
                 pagerLimitKey: 'maxResults',
                 filterFieldKey: 'q'
-            })
+            }
+        );
     }
 
     borrow(event) {

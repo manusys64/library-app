@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ServerDataSource } from 'ng2-smart-table';
 import { environment } from 'src/environments/environment';
+import { BookEditPopupComponent } from '../popups/book-edit-popup/book-edit-popup.component';
 import { internalSettings } from './smart-table-settings';
 
 @Component({
@@ -14,7 +16,8 @@ export class BooksListComponent implements OnInit {
     source: ServerDataSource;
 
     constructor(
-        private http: HttpClient
+        private http: HttpClient,
+        private dialog: MatDialog
     ) {
     }
 
@@ -31,5 +34,9 @@ export class BooksListComponent implements OnInit {
                 sortDirKey: 'direction',
                 filterFieldKey: '#field#'
             })
+    }
+
+    edit(event) {
+        this.dialog.open(BookEditPopupComponent, { data: event.data });
     }
 }

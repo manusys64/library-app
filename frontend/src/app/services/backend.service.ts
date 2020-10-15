@@ -29,6 +29,13 @@ export class BackendService {
         )
     }
 
+    put(url: string, params: object): any {
+        return this.httpClient.put(
+            this.createUrl(url),
+            params
+        )
+    }
+
     createUrl(url: string) {
         return environment.url + url
     }

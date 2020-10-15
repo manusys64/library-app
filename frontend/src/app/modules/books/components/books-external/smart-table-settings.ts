@@ -10,7 +10,7 @@ export const externalSettings = {
         custom: [
             {
                 name: 'borrow',
-                title: `<p>Borrow</p>`
+                title: `<i class="fa fa-bookmark"></i>`
             }
         ],
     },
@@ -53,7 +53,8 @@ export const externalSettings = {
             title: 'ISBN',
             valuePrepareFunction: function (value, row, cell) {
                 const identifiers = row.volumeInfo.industryIdentifiers
-                return identifiers ? identifiers.pop().identifier : ''
+                const lastIdentifier = identifiers ? identifiers.pop() : { identifier: '' }
+                return lastIdentifier ? lastIdentifier.identifier : ''
             },
             filter: false
         },
