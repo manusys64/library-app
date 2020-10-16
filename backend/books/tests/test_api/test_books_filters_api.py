@@ -29,4 +29,3 @@ class BooksFiltersApiTest(APITestCase):
         self.assertEqual(200, response.status_code)
         self.assertEqual(1, response.data['count'])
         self.assertEqual(self.lotr_book.id, response.data['results'][0]['id'])
-

@@ -1,5 +1,4 @@
-from rest_framework import viewsets, filters
-from rest_framework.decorators import action
+from rest_framework import viewsets
 from books.models import Book
 from books.api.serializers import BookSerializer
 from url_filter.integrations.drf import DjangoFilterBackend
