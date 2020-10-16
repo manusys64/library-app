@@ -1,7 +1,11 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Book } from 'src/app/intefaces/book';
-import { BackendService } from 'src/app/services/backend.service';
+import { MatDialog } from '@angular/material/dialog';
+import { Ng2SmartTableComponent, ServerDataSource } from 'ng2-smart-table';
+import { environment } from 'src/environments/environment';
+import { BookDeletePopupComponent } from '../popups/book-delete-popup/book-delete-popup.component';
+import { BookEditPopupComponent } from '../popups/book-edit-popup/book-edit-popup.component';
+import { internalSettings } from './smart-table-settings';
 
 @Component({
     selector: 'app-books-list',
@@ -9,14 +13,36 @@ import { BackendService } from 'src/app/services/backend.service';
     styleUrls: ['./books-list.component.scss']
 })
 export class BooksListComponent implements OnInit {
-    book$: Observable<Book>;
+    tableSettings = internalSettings;
+    source: ServerDataSource;
+    actions = {
+        custom_edit: BookEditPopupComponent,
+        custom_delete: BookDeletePopupComponent
+    }
 
     constructor(
-        private backendService: BackendService
-    ) { }
+        private http: HttpClient,
+        private dialog: MatDialog
+    ) {
+    }
 
     ngOnInit(): void {
-        this.book$ = this.backendService.get('books/', {});
+        this.source = new ServerDataSource(
+            this.http,
+            {
+                endPoint: environment.url + 'books/',
+                dataKey: 'results',
+                pagerPageKey: 'page',
+                pagerLimitKey: 'page_size',
+                totalKey: 'count',
+                sortFieldKey: 'ordering',
+                sortDirKey: 'direction',
+                filterFieldKey: '#field#__icontains'
+            })
+    }
+
+    onAction(event) {
+        this.dialog.open(this.actions[event.action], { data: event.data });
     }
 
 }
