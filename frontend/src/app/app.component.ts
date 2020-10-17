@@ -4,22 +4,21 @@ import { Component } from '@angular/core';
 @Component({
     selector: 'app-root',
     template: `
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary" style="margin-bottom: 30px;">
-            <a class="navbar-brand" href="">Library App</a>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="">Browse</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/form">Add</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/borrow">Borrow</a>
-                    </li>
-                </ul>
+        <div class="pos-f-t" style="margin-bottom: 30px;">
+            <div class="collapse" id="navbarToggleExternalContent">
+                <div class="bg-dark p-4">
+                <h4><a class="navbar-brand" href="">Library App</a></h4>
+                <p><a href="">Browse</a></p>
+                <p><a href="/form">Add</a></p>
+                <p><a href="/borrow">Borrow</a></p>
+                </div>
             </div>
-        </nav>
+            <nav class="navbar navbar-dark bg-dark">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+            </nav>
+        </div>
         <router-outlet></router-outlet>
     `,
     styleUrls: ['./app.component.scss']
